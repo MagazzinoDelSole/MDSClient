@@ -1,8 +1,7 @@
 angular.module('mds').directive('rappresentation', ['$compile', function ($compile) {
-	
 	return {
 		restrict: 'AE',
-		templateUrl: 'images/pure.svg',
+		templateUrl: 'images/rappresentation.svg',
 		scope: {
         	values: "=instantValues"//Creo uno nuovo Scope, che condivide istantValues (single-way binding)
         },
@@ -23,6 +22,10 @@ angular.module('mds').directive('rappresentation', ['$compile', function ($compi
 			var pilot = angular.element(element[0].querySelector("#pilotPanel"));
 			pilot.html("{{values.pilotPanel}}");
 			$compile(pilot)(scope);
+			// Pannello Solare
+            var air = angular.element(element[0].querySelector("#air"));
+            air.html("{{values.air}}");
+            $compile(air)(scope);
 		}
 	};
 }]);

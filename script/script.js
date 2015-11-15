@@ -1,6 +1,6 @@
-var app = angular.module('mds', ['ui.bootstrap']);
+angular.module('mds', ['ui.bootstrap'])
 //Il filtro trasforma la temperatura in un colore
-app.filter('temperature_color', [function () {
+.filter('temperature_color', [function () {
     return function (input) {
     	var input = parseInt(input);
     	var r = input * 3;
@@ -8,8 +8,8 @@ app.filter('temperature_color', [function () {
     	var b = 125 - input;
         return "rgb(" + r + ',' + g + ',' + b + ')';
     }
-}]);
-app.filter('temperature', [function(){
+}])
+.filter('temperature', [function(){
 	return function(input){
 		return input + ' C';
 	}
@@ -21,11 +21,11 @@ app.filter('temperature', [function(){
 //        scope: {
 //        	values: "=instantValues"//Creo uno nuovo Scope, che condivide istantValues (single-way binding)
 //        },
-//        templateUrl: 'disegno.svg'
+//        templateUrl: 'rappresentation.svg'
 //    };
 //}]);
 //Setting the rootScope
-app.run(['$rootScope', '$http', function($rootScope, $http){
+.run(['$rootScope', '$http', function($rootScope, $http){
 	$rootScope.selectedDate = new Date();
 	$rootScope.loadData = function(selectedDate){
 		function getFileName(date){
@@ -50,14 +50,14 @@ app.run(['$rootScope', '$http', function($rootScope, $http){
 			console.log("Errore");
 		});
 	};
-}]);
+}])
 //Table Controller
-app.controller("tableController", ['$scope', function($scope){
+.controller("tableController", ['$scope', function($scope){
 	$scope.titles = ["Ora", "Sonda 1", "Sonda 2", "Sonda 3", "Sonda 4", "Sonda 5", "Sonda 6", "Sonda 7", "Sonda 8", "Sonda 9", "Sonda 10", "Sonda 11", "Entrata acqua ", "Uscita acqua", "Entrata Sole", "Uscita sole", "Pannello pilota", "Temperatura aria"];
 	$scope.advanceIndex = 12;
-}]);
+}])
 //Simulation Controller
-app.controller("simulationController", ["$scope", function($scope){
+.controller("simulationController", ["$scope", function($scope){
 	$scope.steps = $scope.data.length;
 	$scope.step = 0;
 	var timer;
