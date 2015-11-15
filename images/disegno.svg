@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="simulationSvg" viewBox="0 0 1280 720">
+	<!-- <rect x="50" y="30" width="250" height="605" style="stroke-width:5;stroke:black;" id="tank"/> -->
+	<g id="gLevels">
+		<g class="gLevel" ng-repeat="sensor in values.sensors track by $index">
+			<rect x="50" ng-attr-y="{{30 + 55 * $index}}" width="250" height="55" class="gLevelBackground" ng-attr-fill="{{sensor | temperature_color}}"/>
+			<text x="125" ng-attr-y="{{65 + 55 * $index}}" class="gLevelText">{{sensor | temperature}}</text>
+		</g>
+		
+	</g>
+	<!--Tutti i tubi rappresentati nel disegno-->
+	<g stroke="black" fill="none">
+		<!--Tubo Pannello Solare/Scambiatore Acqua-->
+		<path d="M 1030 55 L 780 55 L 780 260" class='gTube' id="panelToExchanger" ng-attr-stroke="{{values.outSun | temperature_color}}"/>
+		<!--Tubo scambiatore - Pompa2 - pannello-->
+		<path d="M 780 460 L 780 605 L 1000 605 L 900 605 L 1150 605 L 1150 150" class='gTube' id="exchangetPompPanel" ng-attr-stroke="{{values.inSun | temperature_color}}"/>
+		<!--Tubo Valvola - pompa1 - scambiatore-->
+		<path d="M 400 605 L 700 605 L 700 460" class='gTube' id="valveToPomp" ng-attr-stroke="{{values.sensors[10] | temperature_color}}"/>
+		<!--Tubo scambiatore/Prima valvola-->
+		<path d="M 700 260 L 700 55 L 400 55" class='gTube' id='valveToExchanger' ng-attr-stroke="{{values.sensors[0] | temperature_color}}"/>
+		<!-- Tubo che collega la prima valvola in altro -->
+		<g ng-repeat="valve in values.valves track by $index">
+			<path ng-attr-d="M 400 {{55 + $index * 110}} L 300 {{55 + $index * 110}}" class="gTube" ng-attr-stroke="{{valve == 1 ? 'black' : values.sensors[$index * 2] | temperature_color}}" />
+			<path ng-if="$index < 5" ng-attr-d="M 400 {{55 + $index * 110}} L 400 {{165 + $index * 110}}" class="gTube" ng-attr-stroke="{{valve == 1 ? 'black' : values.sensors[$index * 2] | temperature_color}}">
+		</g>
+		<!-- Tuno che collega verticalmente la prima valvola alla seconda -->
+		<path d="M 400 55 L 400 165" class="gTube"/>	
+	</g>
+
+	<!--Elementi che disegnano lo scambiatore-->  
+	<rect id="gExchanger" x="690" y="260" width="100" height="200" style="fill:green;stroke-width:5;stroke:black;" />
+	<!--Elementi che disegnano il Pannello Solare-->
+	<rect x="1000" y="50" width="50" height="200" transform="rotate(-45 1000 50)" style="fill:grey"/>
+	<!--Elementi che disegnano le pompe-->
+	<g  id="gPomps" stroke="black" stroke-width="5" fill="#0033FF">
+		<circle cx="550" cy="605" r="40" />    
+		<circle cx="950" cy="605" r="40" />
+	</g> 
+	<!-- Sole -->
+	<g>
+		<defs>
+		    <filter id="sunFilter" x="0" y="0" width="200%" height="200%">
+		      <feOffset result="offOut" in="SourceGraphic" dx="-20" dy="20" />
+		      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+			</filter>
+		</defs>
+		<circle filter="url(#sunFilter)" cx="1280" cy="0" r="75" fill="rgba(255, 255, 0, 1)"/>
+		<text x="1200" y="50" ng-bing="values.air"></text>
+	</g>
+</svg>
