@@ -20,14 +20,13 @@ angular.module('mds').directive('rappresentation', ['$compile', function ($compi
 				box.attr("ng-attr-fill", "{{values.sensors[" + i + "] | temperature_color}}");
 				$compile(level)(scope);
 			});
-			// Pannello pilota
-			var pilot = angular.element(element[0].querySelector("#pilotPanel"));
-			pilot.html("{{values.pilotPanel}}");
-			$compile(pilot)(scope);
-			// Pannello Solare
-            var air = angular.element(element[0].querySelector("#air"));
-            air.html("{{values.air}}");
-            $compile(air)(scope);
+            // Imposto gli altri testi
+            var otherTexts = {"pilotPanel", "air", "inH2O", "outH2O", "isSun", "outSun", "inSunB", "outSunB"};
+            for(var i in otherTexts) {
+                var text = angular.element(element[0].querySelector("#" + otherTexts[i]));
+                text.html("{{values." +  otherTexts[i] + "}}");
+                $compile(text)(scope)
+            }
 		}
 	};
 }]);
