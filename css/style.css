@@ -13,8 +13,12 @@ p{
 	font-size: 15;
 	text-align: center;
 }
-.center{
+#dataPicker {
+	margin: auto;
+	padding: 0px;
+	margin: auto;
 	text-align: center;
+	float: left;
 }
 td {
     text-align: center;

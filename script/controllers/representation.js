@@ -1,9 +1,9 @@
 angular.module('mds').directive('rappresentation', ['$compile', function ($compile) {
 	return {
 		restrict: 'AE',
-		templateUrl: 'images/rappresentation.svg',
+		templateUrl: 'images/representation.svg',
 		scope: {
-        	values: "=instantValues"//Creo uno nuovo Scope, che condivide istantValues (single-way binding)
+        	values: "=instantValues"// Creo uno nuovo Scope, che condivide istantValues (single-way binding)
         },
 		link: function(scope, element, attrs) {
 			// Gestisco i livelli
@@ -15,7 +15,9 @@ angular.module('mds').directive('rappresentation', ['$compile', function ($compi
 				var text = angular.element(components[1]);
 				var tube = angular.element(components[2]);
 				// Imposto il testo
-				text.html("{{values.sensors[" + i + "]}}");
+				text.html("{{values.sensors[" + i + "] | temperature}}");
+				// E il colore
+				box.attr("ng-attr-fill", "{{values.sensors[" + i + "] | temperature_color}}");
 				$compile(level)(scope);
 			});
 			// Pannello pilota

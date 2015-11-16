@@ -8,18 +8,18 @@
 		<script type="text/javascript" src="script/ui-bootstrap-tpls-0.13.3.js"></script>
 		<script type="text/javascript" src="lib/Chart.min.js"></script>
 		<script src="script/script.js"></script>
-		<script src="script/rappresentation.js"></script>
+		<script src="script/controllers/representation.js"></script>
 	</headh>
 	<body ng-app="mds">
 		<h1><img src="images/logo.gif" alt="Magazzino del Sole"></img></h1>
 		<div class="container">
 			<h2>Dati statistici - Beta</h2>
 			<p>Per ulteriori informazioni visita <a href="http://www.magazzinodelsole.com/">magazzinodelsole.com</a></p>
-			<div class="center">
-				Seleziona una data:
-				<input style="width: 30%;" type="date" class="form-control" datepicker-popup ng-model="selectedDate" ng-required="true" close-text="Close"/>
+			<p>Seleziona una data:</p>
+			<p>
+				<input style="width: 30%;" id="dataPicker" type="date" ng-required="true" class="form-control" datepicker-popup ng-model="selectedDate" close-text="Close"/>
 				<button id="openButton" type="button" class="btn btn-primary" ng-click="loadData(selectedDate)">Carica dati</button>
-			</div>
+			</p>
 			</br>
 			<!-- Pannello della tabella-->
 			<div class="col-ms-12" ng-controller="tableController" ng-if="data">
@@ -57,7 +57,7 @@
 		    </div>
 		    <!-- Fine tabella -->
 		    <!-- Pannello delle simulazioni -->
-		    <div class="col-ms-6" ng-if="data" ng-controller="simulationController">
+		    <div class="col-ms-12" ng-if="data" ng-controller="simulationController">
 		        <div class="panel panel-default" id="simulationPanel">
 		        	<div class="panel-heading clearfix">
 						<div class="btn-group pull-right">
@@ -87,7 +87,7 @@
 		    </div>
 		    <!-- Fine pannello delle simulazioni -->
 		    <!-- Inizio pannello del grafico -->
-	        <div class="col-sm-6" ng-if="data">
+	        <div class="col-ms-12" ng-if="data">
 		        <div class="panel panel-default" id="chartPanel">
 		        	<div class="panel-heading clearfix">
 		        		<div class="btn-group pull-right">				        
@@ -106,7 +106,7 @@
 		    </div>
 		    <!-- Fine pannello del grafico -->
 		    <!--Inizio pannello dei dati riassuntivi -->
-		    <div class="col-sm-6" ng-if="data">
+		    <div class="col-ms-12" ng-if="data">
 		        <div class="panel panel-default" id="summaryPanel">
 		        	<div class="panel-heading">
 		        		<h3 class="panel-title"><strong>Dati Riassuntivi</strong></h3>
@@ -120,5 +120,10 @@
 		    </div>
 		    <!-- Fine del pannello dei dati riassuntivi -->
 	    </div>
+	<script>
+		setInterval(function() {
+			location.reload();
+		}, 500000);
+	</script>
 	</body>
 </html>
