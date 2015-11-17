@@ -21,7 +21,7 @@ angular.module('mds').directive('rappresentation', ['$compile', function ($compi
 				$compile(level)(scope);
 			});
             // Imposto gli altri testi
-            var otherTexts = {"pilotPanel", "air", "inH2O", "outH2O", "isSun", "outSun", "inSunB", "outSunB"};
+            var otherTexts = ["pilotPanel", "air", "inH2O", "outH2O", "inSun", "outSun", "inSunB", "outSunB"];
             for(var i in otherTexts) {
                 var text = angular.element(element[0].querySelector("#" + otherTexts[i]));
                 text.html("{{values." +  otherTexts[i] + "}}");

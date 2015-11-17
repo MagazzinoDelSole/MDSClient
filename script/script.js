@@ -16,6 +16,7 @@ angular.module('mds', ['ui.bootstrap'])
 }])
 .run(['$rootScope', '$http', function($rootScope, $http){ // Imposto il root scope
 	$rootScope.selectedDate = new Date(); // Imposto oggi come data selezionata
+	$rootScope.step = 0;
 	$rootScope.loadData = function(selectedDate){ // Funcione per il download di un file
 		function getFileName(date){
 			var d = date.getDay(), m = date.getMonth();
@@ -52,7 +53,9 @@ angular.module('mds', ['ui.bootstrap'])
 		if(timer != null) // Se esiste già un timer non faccio niente
 			return ;
 		timer = setInterval(function(){ // Imposto il timer
-			$scope.step = Math.min($scope.steps, $scope.step + 1);
+			$scope.step++;
+			if($scope.step >= $scope.steps)
+				clearInterval(timer);
 			$scope.$apply(); // Aggiorno lo scope di angular
 		}, 50);
 	};

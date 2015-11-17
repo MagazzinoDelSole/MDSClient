@@ -2,7 +2,6 @@
 	<head>
 		<title>Magazzino del Sole</title>		
 		<link href="css/style.css" rel="stylesheet" type="text/css">
-		<link href="css/svg-style.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
 		<script type="text/javascript" src="script/ui-bootstrap-tpls-0.13.3.js"></script>
@@ -67,7 +66,6 @@
 					</div>	
 		        	<div class="panel-body" ng-if="showSimulation">
 		        		<rappresentation instant-values="data[step]"></rappresentation>
-		        		<!-- <my-svg instant-values="data[step]"></my-svg> -->
 		        		<h2>Ora: {{data[step].time}}</h2><h2 id="simulationTime">
 			        </div>
 			        <ul class="list-group" ng-if="showSimulation">

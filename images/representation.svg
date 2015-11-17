@@ -1,64 +1,90 @@
-<?xml version="1.0"?> 
+<?xml version="1.0"?>
 <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="simulationSvg" viewBox="0 0 1280 720">
+	<style>
+	/* <![CDATA[ */
+	.gLevel{
+    	width: 250px;
+    	height: 55px;
+    	x: 50px;
+    	stroke-width: 0px;
+    }
+    .gTube{
+    	stroke-width: 10px;
+    }
+    .gLevelText{
+    	font-size: 32px;
+    	fill: white;
+    	font-family: Monospace;
+    }
+    .textTemperature {
+    	font-size: 28px;
+        font-family: Monospace;
+    }
+    .closeTube {
+    	stroke: black!important;
+    }
+	 /* ]]> */
+	</style>
+
 	<!-- <rect x="50" y="30" width="250" height="605" style="stroke-width:5;stroke:black;" id="tank"/> -->
 	<g id="gLevels">
 		<g class="gLevel">
 			<!-- Rettangolo del livello -->
 			<rect x="50" y="30" width="250" height="55" class="gLevelBackground"/>
 			<!-- Testo del livello -->
-			<text x="150" y="60" class="gLevelText" stroke="white"></text>
+			<text x="150" y="60" class="gLevelText"></text>
 			<!-- Tubo orizzontale -->
 			<path d="M 400 55 L 300 55" class="gTube" stroke="black" />
 		</g>
 		<g class="gLevel">
 			<rect x="50" y="85" width="250" height="55" class="gLevelBackground"/>
-			<text x="150" y="110" class="gLevelText" stroke="white"></text>
+			<text x="150" y="110" class="gLevelText"></text>
 			<!-- Tubo verticale -->
-			<path d="M 400 55 L 400 165" class="gTube"/>
+			<path d="M 400 55 L 400 165" class="gTube" stroke="black"/>
 		</g>
 		<g class="gLevel">
 			<rect x="50" y="140" width="250" height="55" class="gLevelBackground"/>
-			<text x="150" y="165" class="gLevelText" stroke="white"></text>
+			<text x="150" y="165" class="gLevelText"></text>
 			<path d="M 400 165 L 300 165" class="gTube" stroke="black" />
 		</g>
 		<g class="gLevel">
 			<rect x="50" y="195" width="250" height="55" class="gLevelBackground"/>
-			<text x="150" y="220" class="gLevelText" stroke="white"></text>
-			<path d="M 400 165 L 400 275" class="gTube"/>
+			<text x="150" y="220" class="gLevelText"></text>
+			<path d="M 400 165 L 400 275" class="gTube"  stroke="black"/>
 		</g>
 		<g class="gLevel">
 			<rect x="50" y="250" width="250" height="55" class="gLevelBackground"/>
-			<text x="150" y="275" class="gLevelText" stroke="white"></text>
+			<text x="150" y="275" class="gLevelText"></text>
 			<path d="M 400 275 L 300 275" class="gTube" stroke="black" />
 		</g>
 		<g class="gLevel">
 			<rect x="50" y="305" width="250" height="55" class="gLevelBackground"/>
-			<text x="150" y="330" class="gLevelText" stroke="white"></text>
-            
+			<text x="150" y="330" class="gLevelText"></text>
+           	<path d="M 400 275 L 400 385" class="gTube" stroke="black"/>
 		</g>
 		<g class="gLevel">
 			<rect x="50" y="360" width="250" height="55" class="gLevelBackground"/>
-			<text x="150" y="385" class="gLevelText" stroke="white"></text>
+			<text x="150" y="385" class="gLevelText"></text>
 			<path d="M 400 385 L 300 385" class="gTube" stroke="black" />
 		</g>
 		<g class="gLevel">
 			<rect x="50" y="415" width="250" height="55" class="gLevelBackground"/>
-			<text x="150" y="440" class="gLevelText" stroke="white"></text>
-            
+			<text x="150" y="440" class="gLevelText"></text>
+            <path d="M 400 386 L 400 495" class="gTube" stroke="black"/>
 		</g>
 		<g class="gLevel">
 			<rect x="50" y="470" width="250" height="55" class="gLevelBackground"/>
-			<text x="150" y="495" class="gLevelText" stroke="white"></text>
+			<text x="150" y="495" class="gLevelText"></text>
 			<path d="M 400 495 L 300 495" class="gTube" stroke="black" />
 		</g>
 		<g class="gLevel">
 			<rect x="50" y="525" width="250" height="55" class="gLevelBackground"/>
-			<text x="150" y="550" class="gLevelText" stroke="white"></text>
-            
+			<text x="150" y="550" class="gLevelText"></text>
+            <path d="M 400 495 L 400 605" class="gTube" stroke="black"/>
 		</g>
 		<g class="gLevel">
 			<rect x="50" y="580" width="250" height="55" class="gLevelBackground"/>
-			<text x="150" y="605" class="gLevelText" stroke="white"></text>
+			<text x="150" y="605" class="gLevelText"></text>
 			<path d="M 400 605 L 300 605" class="gTube" stroke="black" />
 		</g>
 	</g>
@@ -77,17 +103,17 @@
 
 	<!--Elementi che disegnano lo scambiatore-->  
 	<rect id="gExchanger" x="690" y="260" width="100" height="200" style="fill:green;stroke-width:5;stroke:black;" />
-    <text x="670" y="260" id="inH2o"></text>
-    <text x="670" y="480" id="outH2o"></text>
-    <text x="800" y="260" id="inSun"></text>
-    <text x="800" y="480" id="outSun"></text>
+    <text x="600" y="260" id="inH2O" class="textTemperature"></text>
+    <text x="600" y="480" id="outH2O" class="textTemperature"></text>
+    <text x="810" y="260" id="inSun" class="textTemperature"></text>
+    <text x="810" y="480" id="outSun" class="textTemperature"></text>
     
 	<!--Elementi che disegnano il Pannello Solare-->
 	<rect x="1000" y="50" width="50" height="200" transform="rotate(-45 1000 50)" style="fill:grey"/>
 
 	<!--Elementi che disegnano il Pannello Pilota-->
     <rect x="1155" y="200" width="45" height="100" transform="rotate(-45 1155 200)" style="fill:grey"/>
-	<text x="1185" y="300" id="pilotPanel"></text>
+	<text x="1185" y="300" id="pilotPanel" class="textTemperature"></text>
 
 	<!--Elementi che disegnano le pompe-->
 	<g  id="gPomps" stroke="black" stroke-width="5" fill="#0033FF">
@@ -97,14 +123,14 @@
 	<!-- Sole -->
 	<g>
 		<defs>
-		    <filter id="sunFilter" x="0" y="0" width="200%" height="200%">
+		    <filter id="sunFilter" x="-1" y="0" width="200%" height="200%">
 		      <feOffset result="offOut" in="SourceGraphic" dx="-20" dy="20" />
 		      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
 		      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
 			</filter>
 		</defs>
 		<circle filter="url(#sunFilter)" cx="1280" cy="0" r="75" fill="yellow"/>
-		<text x="1200" y="50" id="air"></text>
+		<text x="1200" y="50" id="air" class="textTemperature"></text>
 	</g>
     <!-- Freccie -->
     <g>
