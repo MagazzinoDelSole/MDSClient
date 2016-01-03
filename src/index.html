@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title>Magazzino del Sole</title>		
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+		<script type="text/javascript" src="script/ui-bootstrap-tpls-0.14.3.min.js"></script>
+		<script src="script/script.js"></script>
+		<script src="script/controllers/representation.js"></script>
+	</headh>
+	<body ng-app="mds">
+		<div class="container">
+			<h2>Dati statistici - Beta</h2>
+			<p>Seleziona una data:</p>
+			
+			<div class="row" id="dateContainer" ng-controller="dateCtrl">
+        		<div class="col-md-6">
+					<p class="input-group">
+		              <input type="date" class="form-control" uib-datepicker-popup ng-model="date.selected" is-open="date.popupState" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+		              <span class="input-group-btn">
+		                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+		                <button id="openButton" type="button" class="btn btn-primary" ng-click="loadData(selectedDate)">Carica dati</button>
+		              </span>
+		            </p>
+		         </div>
+		    </div>
+			</br>
+			<!-- Tabella-->
+			<div ng-include="'table.tpl.html'"></div>
+		    <!-- Simulazione -->
+		    <div ng-include="'rappresentation.tpl.html'"></div>
+	    </div>
+	</body>
+</html>

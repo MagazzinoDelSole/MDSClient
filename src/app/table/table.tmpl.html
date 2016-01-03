@@ -1,0 +1,33 @@
+<div class="col-ms-12" ng-controller="tableCtrl" ng-if="data">
+    <div class="panel panel-default" id="tablePanel">
+        <div class="panel-heading clearfix">
+            <div class="btn-group pull-right">
+                <button ng-show="showTable" type="button" class="btn btn-primary" ng-model="showAdvanced" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false">Dati avanzati</button>
+                <button type="button" class="btn btn-primary" ng-model="showTable" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false">Tabella</button>
+            </div>
+            <h3 class="panel-title"><strong>Tabella Completa</strong></h3>
+        </div>
+        <!--La tabella non è all'interno del panel-noby, perchè cosi fa parte del pannello-->
+        <div class="res-table" id="tableBodyPanel" ng-show="showTable">
+            <table id="tab" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th ng-repeat="title in titles track by $index" ng-show="$index < advanceIndex || showAdvanced" ng-bind="title"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="instant in data track by $index">
+                        <th ng-bind="instant.time"></th>
+                        <th ng-repeat="sensor in instant.sensors track by $index" ng-bind="sensor"></th>
+                        <th ng-bind="instant.inH2O" ng-if="showAdvanced"></th>
+                        <th ng-bind="instant.outH2O" ng-if="showAdvanced"></th>
+                        <th ng-bind="instant.inSun" ng-if="showAdvanced"></th>
+                        <th ng-bind="instant.outSun" ng-if="showAdvanced"></th>
+                        <th ng-bind="instant.pilotPanel" ng-if="showAdvanced"></th>
+                        <th ng-bind="instant.air" ng-if="showAdvanced"></th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
