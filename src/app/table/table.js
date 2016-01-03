@@ -10,4 +10,4 @@ angular.module('mds.table', ['mds.data'])
 	
 	// Assing the data from the mdsData value to the scope
 	$scope.data = mdsData.values;
-}])
+}]);

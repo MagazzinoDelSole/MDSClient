@@ -1,4 +1,4 @@
-angular.module('mds.rappresentation', ['mds.Data'])
+angular.module('mds.rappresentation', ['mds.data'])
 
 
 .controller('RappresentationCtrl', ['$scope', 'mdsData', function($scope, mdsData) {
@@ -6,7 +6,26 @@ angular.module('mds.rappresentation', ['mds.Data'])
 	$scope.values = mdsData.values;
 	$scope.steps = mdsData.steps; // Numero di step
 	$scope.step = 0; // Step attuale
+	
+	$scope.preferences = {
+		speed: 1
+	};
+	
+	$scope.skipTo = function (point) {
+		$scope.step = point;
+	};
+	
 	var timer; // Timer che fa 'scorrere' gli step
+	
+	$scope.setSpeed = function (newSpeed) {
+		$scope.preferences.speed = newSpeed;
+		if(timer != null) {
+			clearInterval(timer);
+			
+		}
+	};
+	
+	
 	$scope.play = function() { // Pulsante Play
 		if (timer != null) { // Se esiste già un timer non faccio niente
 			return;
@@ -28,8 +47,10 @@ angular.module('mds.rappresentation', ['mds.Data'])
 	$scope.pause = function() { // Pulsante Pausa
 		if (timer != null) { // Se il timer esiste lo cancello
 			clearInterval(timer);
-			
+		}
 	};
+	
+	
 }])
 
 .directive('rappresentation', ['$compile', function($compile) {
@@ -59,7 +80,7 @@ angular.module('mds.rappresentation', ['mds.Data'])
 			for (var i in otherTexts) {
 				var text = angular.element(element[0].querySelector("#" + otherTexts[i]));
 				text.html("{{values." + otherTexts[i] + "}}");
-				$compile(text)(scope)
+				$compile(text)(scope);
 			}
 		}
 	};
@@ -67,16 +88,16 @@ angular.module('mds.rappresentation', ['mds.Data'])
 
 .filter('temperature_color', [function() {
 	return function(input) {
-		var input = parseInt(input);
-		var r = input * 3;
+		var n = parseInt(input, 10);
+		var r = n * 3;
 		var g = 25;
-		var b = 125 - input;
-		return "rgb(" + r + ',' + g + ',' + b + ')';
-	}
+		var b = 125 - n;
+		return ("rgb(" + r + ',' + g + ',' + b + ')');
+	};
 }])
 
 .filter('temperature', [function() {
 	return function(input) {
-		return input + ' C';
-	}
+		return (input + ' C');
+	};
 }]);

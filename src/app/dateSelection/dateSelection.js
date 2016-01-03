@@ -12,7 +12,7 @@ angular.module('mds.dataSelection', ['ui.bootstrap', 'mds.data', 'mds.dataRetriv
 	// This function is called when the button next to the date input is clicked
 	// and toggle the ui.bootstrap date picker
 	$scope.open = function($event) {
-	 	$scope.date.popupState = true;
+		$scope.date.popupState = true;
 	};
 
 	// This function is called when the 'carica' button is pressed
