@@ -1,23 +1,50 @@
-angular.module('mds')
+angular.module('mds.rappresentation', ['mds.Data'])
 
 
-.controller('rappresentationCtrl', ['$scope', function ($scope) {
-    
+.controller('RappresentationCtrl', ['$scope', 'mdsData', function($scope, mdsData) {
+	
+	$scope.values = mdsData.values;
+	$scope.steps = mdsData.steps; // Numero di step
+	$scope.step = 0; // Step attuale
+	var timer; // Timer che fa 'scorrere' gli step
+	$scope.play = function() { // Pulsante Play
+		if (timer != null) { // Se esiste già un timer non faccio niente
+			return;
+		}
+		timer = setInterval(function() { // Imposto il timer
+			$scope.step++;
+			if ($scope.step >= $scope.steps) {
+				clearInterval(timer);
+			}
+			$scope.$apply(); // Aggiorno lo scope di angular
+		}, 50);
+	};
+	$scope.stop = function() { // Pulsante stop
+		if (timer != null) { // Se il timer esiste lo rimuovo
+			clearInterval(timer);
+		}
+		$scope.step = 0; // E riporto a 0 il contatore degli step
+	};
+	$scope.pause = function() { // Pulsante Pausa
+		if (timer != null) { // Se il timer esiste lo cancello
+			clearInterval(timer);
+			
+	};
 }])
 
-.directive('rappresentation', ['$compile', function ($compile) {
+.directive('rappresentation', ['$compile', function($compile) {
 	return {
 		restrict: 'AE',
-		templateUrl: 'images/representation.svg',
+		templateUrl: 'rappresentation/rappresentation.tpl.svg',
 		scope: {
-        	values: "=instantValues"// Creo uno nuovo Scope, che condivide istantValues (single-way binding)
-        },
+			values: "=instantValues" // Creo uno nuovo Scope, che condivide istantValues (single-way binding)
+		},
 		link: function(scope, element, attrs) {
 			// Gestisco i livelli
 			var levels = element[0].querySelectorAll('.gLevel');
 			angular.forEach(levels, function(path, i) {
 				var level = angular.element(path);
-                var components = level.children();
+				var components = level.children();
 				var box = angular.element(components[0]);
 				var text = angular.element(components[1]);
 				var tube = angular.element(components[2]);
@@ -27,29 +54,29 @@ angular.module('mds')
 				box.attr("ng-attr-fill", "{{values.sensors[" + i + "] | temperature_color}}");
 				$compile(level)(scope);
 			});
-            // Imposto gli altri testi
-            var otherTexts = ["pilotPanel", "air", "inH2O", "outH2O", "inSun", "outSun", "inSunB", "outSunB"];
-            for(var i in otherTexts) {
-                var text = angular.element(element[0].querySelector("#" + otherTexts[i]));
-                text.html("{{values." +  otherTexts[i] + "}}");
-                $compile(text)(scope)
-            }
+			// Imposto gli altri testi
+			var otherTexts = ["pilotPanel", "air", "inH2O", "outH2O", "inSun", "outSun", "inSunB", "outSunB"];
+			for (var i in otherTexts) {
+				var text = angular.element(element[0].querySelector("#" + otherTexts[i]));
+				text.html("{{values." + otherTexts[i] + "}}");
+				$compile(text)(scope)
+			}
 		}
 	};
 }])
 
-.filter('temperature_color', [function () { 
-    return function (input) {
-    	var input = parseInt(input);
-    	var r = input * 3;
-    	var g = 25;
-    	var b = 125 - input;
-        return "rgb(" + r + ',' + g + ',' + b + ')';
-    }
+.filter('temperature_color', [function() {
+	return function(input) {
+		var input = parseInt(input);
+		var r = input * 3;
+		var g = 25;
+		var b = 125 - input;
+		return "rgb(" + r + ',' + g + ',' + b + ')';
+	}
 }])
 
-.filter('temperature', [function(){
-	return function(input){
+.filter('temperature', [function() {
+	return function(input) {
 		return input + ' C';
 	}
 }]);
