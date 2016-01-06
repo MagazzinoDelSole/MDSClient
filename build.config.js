@@ -66,11 +66,18 @@ module.exports = {
       'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
       'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
       'vendor/angular-ui-router/release/angular-ui-router.js',
-      'vendor/angular-ui-utils/modules/route/route.js'
+      'vendor/angular-ui-utils/modules/route/route.js',
+      'vendor/angular-rangeslider/angular.rangeSlider.js',
+      'vendor/angular-bootstrap-slider/slider.js',
+      'vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js'
     ],
     css: [
+      'vendor/bootstrap/dist/css/bootstrap.min.css',
+      'vendor/bootstrap/dist/css/bootstrap-theme.min.css',
+      'vendor/angular-bootstrap/ui-bootstrap-csp.css',
+      'vendor/angular-rangeslider/angular.rangeSlider.css',
+      'vendor/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css'
     ],
-    assets: [
-    ]
+    assets: []
   },
 };

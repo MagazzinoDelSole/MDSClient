@@ -1,9 +1,9 @@
-<div class="col-ms-12" ng-if="data.values.length > 0">
+<div class="col-ms-12" ng-show="data.steps > 0">
     <div class="panel panel-default" id="tablePanel">
         <div class="panel-heading clearfix">
             <div class="btn-group pull-right">
-                <button ng-show="showTable" type="button" class="btn btn-primary" ng-model="showAdvanced" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false">Dati avanzati</button>
-                <button type="button" class="btn btn-primary" ng-model="showTable" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false">Tabella</button>
+                <button ng-show="showTable" type="button" class="btn btn-primary" ng-model="showAdvanced" btn-checkbox>Dati avanzati</button>
+                <button type="button" class="btn btn-primary" ng-model="showTable" btn-checkbox >Tabella</button>
             </div>
             <h3 class="panel-title"><strong>Tabella Completa</strong></h3>
         </div>
@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="instant in data track by $index">
+                    <tr ng-repeat="instant in data.values track by $index">
                         <th ng-bind="instant.time"></th>
                         <th ng-repeat="sensor in instant.sensors track by $index" ng-bind="sensor"></th>
                         <th ng-bind="instant.inH2O" ng-if="showAdvanced"></th>

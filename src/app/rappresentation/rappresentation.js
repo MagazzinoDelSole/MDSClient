@@ -1,52 +1,90 @@
-angular.module('mds.rappresentation', ['mds.data'])
+angular.module('mds.rappresentation', ['ui.bootstrap-slider', 'mds.data'])
 
 
-.controller('RappresentationCtrl', ['$scope', 'mdsData', function($scope, mdsData) {
+.controller('RappresentationCtrl', ['$scope', '$interval', 'mdsData', function($scope, $interval, mdsData) {
 	
-	$scope.values = mdsData.values;
-	$scope.steps = mdsData.steps; // Numero di step
-	$scope.step = 0; // Step attuale
+	// insert in the scope areference to the data
+	$scope.data = mdsData;
 	
+	// This is the actual rappresentated step
+	$scope.step = 0;
+	
+	// This is the object that contains the preferences
+	// of the simulation
 	$scope.preferences = {
 		speed: 1
 	};
 	
+	// Function used to change the speed of the simulation
+	$scope.setSpeed = function (newSpeed) {
+		
+		// Set the new speed
+		$scope.preferences.speed = newSpeed;
+		
+		// And if the simulation is running, change his speed
+		if(angular.isDefined(timer)) {
+			$scope.pause();
+			$scope.play();
+		}
+	};
+	
+	// Function used to skip to a specify step
 	$scope.skipTo = function (point) {
 		$scope.step = point;
 	};
 	
-	var timer; // Timer che fa 'scorrere' gli step
-	
-	$scope.setSpeed = function (newSpeed) {
-		$scope.preferences.speed = newSpeed;
-		if(timer != null) {
-			clearInterval(timer);
-			
-		}
-	};
+	// This is the timer, well, the interval that 'animate' the simulation
+	var timer;
 	
 	
-	$scope.play = function() { // Pulsante Play
-		if (timer != null) { // Se esiste già un timer non faccio niente
+	// Play button
+	$scope.play = function() {
+		
+		// Calculate the delay
+		var delay = 250 / $scope.preferences.speed;
+		
+		// If the interval already exist, don't do anything
+		if (angular.isDefined(timer)) {
 			return;
 		}
-		timer = setInterval(function() { // Imposto il timer
+		
+		// set the new interval
+		timer = $interval(function () {
+			
+			// At every 'tick' of the interval, incrememnt the step counter
 			$scope.step++;
-			if ($scope.step >= $scope.steps) {
-				clearInterval(timer);
+			
+			// If this is the last step, stop it
+			// NB: I don't set directly the number of the step in the angular
+			// $interval because the user can slide the slider andchange the number
+			// of the step
+			if($scope.step >= mdsData.steps) {
+				$scope.stop();
 			}
-			$scope.$apply(); // Aggiorno lo scope di angular
-		}, 50);
+			
+		}, delay);
+		
 	};
-	$scope.stop = function() { // Pulsante stop
-		if (timer != null) { // Se il timer esiste lo rimuovo
-			clearInterval(timer);
+	
+	// Stop button
+	$scope.stop = function() {
+		// If the timer exist, stop it
+		if (angular.isDefined(timer)) {
+			$interval.cancel(timer);
+			timer = undefined;
+			
+			// And reset the step counter
+			$scope.step = 0;
 		}
-		$scope.step = 0; // E riporto a 0 il contatore degli step
+		
 	};
-	$scope.pause = function() { // Pulsante Pausa
-		if (timer != null) { // Se il timer esiste lo cancello
-			clearInterval(timer);
+	
+	// Pause button
+	$scope.pause = function() {
+		// If the timer exist
+		if (angular.isDefined(timer)) {
+			$interval.cancel(timer);
+			timer = undefined;
 		}
 	};
 	
@@ -58,10 +96,12 @@ angular.module('mds.rappresentation', ['mds.data'])
 		restrict: 'AE',
 		templateUrl: 'rappresentation/rappresentation.tpl.svg',
 		scope: {
-			values: "=instantValues" // Creo uno nuovo Scope, che condivide istantValues (single-way binding)
+			// Create a new scope, that share 'instantValues' (the equal means
+			// single-way binding)
+			values: "=instantValues"
 		},
 		link: function(scope, element, attrs) {
-			// Gestisco i livelli
+			// Handle the levels
 			var levels = element[0].querySelectorAll('.gLevel');
 			angular.forEach(levels, function(path, i) {
 				var level = angular.element(path);
@@ -75,7 +115,8 @@ angular.module('mds.rappresentation', ['mds.data'])
 				box.attr("ng-attr-fill", "{{values.sensors[" + i + "] | temperature_color}}");
 				$compile(level)(scope);
 			});
-			// Imposto gli altri testi
+			
+			// Set the other text
 			var otherTexts = ["pilotPanel", "air", "inH2O", "outH2O", "inSun", "outSun", "inSunB", "outSunB"];
 			for (var i in otherTexts) {
 				var text = angular.element(element[0].querySelector("#" + otherTexts[i]));
