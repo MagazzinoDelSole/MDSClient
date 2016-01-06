@@ -69,14 +69,16 @@ module.exports = {
       'vendor/angular-ui-utils/modules/route/route.js',
       'vendor/angular-rangeslider/angular.rangeSlider.js',
       'vendor/angular-bootstrap-slider/slider.js',
-      'vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js'
+      'vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js',
+      'vendor/angular-busy/dist/angular-busy.min.js'
     ],
     css: [
       'vendor/bootstrap/dist/css/bootstrap.min.css',
       'vendor/bootstrap/dist/css/bootstrap-theme.min.css',
       'vendor/angular-bootstrap/ui-bootstrap-csp.css',
       'vendor/angular-rangeslider/angular.rangeSlider.css',
-      'vendor/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css'
+      'vendor/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css',
+      'vendor/angular-busy/dist/angular-busy.min.css'
     ],
     assets: []
   },

@@ -1,4 +1,4 @@
-angular.module('mds.dataSelection', ['ui.bootstrap', 'mds.data', 'mds.dataRetriver'])
+angular.module('mds.dataSelection', ['ui.bootstrap', 'cgBusy', 'mds.data', 'mds.dataRetriver'])
 
 .controller('DateCtrl', ['$scope', 'mdsData', 'mdsDataRetriver', function($scope, mdsData, mdsDataRetriver) {
 	
@@ -19,7 +19,11 @@ angular.module('mds.dataSelection', ['ui.bootstrap', 'mds.data', 'mds.dataRetriv
 	$scope.loadData = function(date) {
 		
 		// Use the mdsDataRetriver service to get the data
-		mdsDataRetriver.retrive(date).then(function (data) {
+		// I save the promise and then call 'then' only to assign the promise
+		// to the scope, so cgBusy can draw an loading spinner one the page
+		var promise = mdsDataRetriver.retrive(date);
+		$scope.promise = promise;
+		promise.then(function (data) {
 			// If the data is retrived, save in the 'mdsData' value
 			mdsData.steps = data.length;
 			mdsData.values = data;
