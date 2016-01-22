@@ -3,7 +3,7 @@
     <div class="row" id="dateContainer">
     	<div class="col-md-4 col-md-offset-4">
     		<p class="input-group">
-                <input type="date" class="form-control" uib-datepicker-popup ng-model="date.selected" is-open="date.popupState" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                <input type="date" class="form-control" uib-datepicker-popup ng-model="date.selected" is-open="date.popupState" datepicker-options="dateOptions" date-disabled="isNotAvailable(date, mode)" ng-required="true" close-text="Chiudi" />
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
         		    <button id="openButton" type="button" class="btn btn-primary" ng-click="loadData(date.selected)">Carica dati</button>

@@ -9,6 +9,9 @@ angular.module('mds.dataSelection', ['ui.bootstrap', 'cgBusy', 'mds.data', 'mds.
 		selected: new Date()
 	};
 
+	// Option for the picker
+	$scope.dateOptions = {};
+
 	// This function is called when the button next to the date input is clicked
 	// and toggle the ui.bootstrap date picker
 	$scope.open = function($event) {
@@ -16,7 +19,7 @@ angular.module('mds.dataSelection', ['ui.bootstrap', 'cgBusy', 'mds.data', 'mds.
 	};
 
 	// This function is called when the 'carica' button is pressed
-	$scope.loadData = function(date) {
+	$scope.loadData = function (date) {
 		
 		// Use the mdsDataRetriver service to get the data
 		// I save the promise and then call 'then' only to assign the promise
@@ -32,5 +35,21 @@ angular.module('mds.dataSelection', ['ui.bootstrap', 'cgBusy', 'mds.data', 'mds.
 			alert("La data selezionata non e' disponibile");
 		});
 	};
+
+	$scope.isNotAvailable = function (date, mode) {
+		date.setHours(0,0,0,0);
+		var availableDates = $scope.availableDates;
+		for(var i in availableDates)			
+			if(availableDates[i].getTime() == date.getTime())		
+				return false;
+		return true;
+	};
+
+
+	mdsDataRetriver.getAvailableDates().then(function (dates) {
+		$scope.availableDates = dates;
+	}, function (error) {
+
+	});
 
 }]);

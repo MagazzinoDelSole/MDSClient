@@ -65,5 +65,24 @@ angular.module('mds.dataRetriver', [])
         return defer.promise;
     };
 
+    // Get the available dates
+    retriver.getAvailableDates = function () {
+    	var defer = $q.defer();
+
+    	$http.get("available_dates.php").then(function (response) {
+    		var temp = response.data;
+            var dates = [];
+            for(var i in temp) {
+                dates[i] = new Date(temp[i]);
+                dates[i].setHours(0, 0, 0, 0);
+            }
+            defer.resolve(dates);
+    	}, function (error) {
+    		defer.reject();
+    	});        
+
+    	return defer.promise;
+    };
+
     return retriver;
 }]);
