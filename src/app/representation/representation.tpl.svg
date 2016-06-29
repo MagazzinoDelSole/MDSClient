@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 20.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 612 344" style="enable-background:new 0 0 612 344;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{font-family:'ArialMT';}
+	.st2{font-size:12px;}
+	.st3{stroke:#000000;stroke-width:10;}
+	.st4{fill:none;stroke:#000000;stroke-width:10;}
+	.st5{fill:#008000;stroke:#000000;stroke-width:5;}
+	.st6{fill:#0033FF;stroke:#000000;stroke-width:5;}
+	.st7{fill:#E6E7E8;stroke:#231F20;stroke-linecap:round;stroke-miterlimit:10;}
+	.st8{font-size:7.6378px;}
+	.st9{fill:none;stroke:#D3DE26;stroke-width:50;stroke-miterlimit:10;stroke-dasharray:4.0266,4.0266;}
+	.st10{fill:#FFFF00;}
+</style>
+<g id="gLevels">
+	<g>
+		<rect x="23.9" y="30.9" width="119.5" height="26.3"/>
+		<text transform="matrix(1 0 0 1 32 44.0166)" class="st0 st1 st2">0</text>
+	</g>
+	<g>
+		<rect x="23.9" y="57.2" width="119.5" height="26.3"/>
+		<text transform="matrix(1 0 0 1 32 69.1667)" class="st0 st1 st2">1</text>
+	</g>
+	<g>
+		<rect x="23.9" y="83.5" width="119.5" height="26.3"/>
+		<text transform="matrix(1 0 0 1 32 96.6165)" class="st0 st1 st2">2</text>
+	</g>
+	<g>
+		<rect x="23.9" y="109.8" width="119.5" height="26.3"/>
+		<text transform="matrix(1 0 0 1 32 122.9165)" class="st0 st1 st2">3</text>
+	</g>
+	<g>
+		<rect x="23.9" y="136.1" width="119.5" height="26.3"/>
+		<text transform="matrix(1 0 0 1 32 149.2165)" class="st0 st1 st2">4</text>
+	</g>
+	<g>
+		<rect x="23.9" y="162.4" width="119.5" height="26.3"/>
+		<text transform="matrix(1 0 0 1 32 175.5166)" class="st0 st1 st2">5</text>
+	</g>
+	<g>
+		<rect x="23.9" y="188.7" width="119.5" height="26.3"/>
+		<text transform="matrix(1 0 0 1 32 201.8168)" class="st0 st1 st2">6</text>
+	</g>
+	<g>
+		<rect x="23.9" y="215" width="119.5" height="26.3"/>
+		<text transform="matrix(1 0 0 1 32 228.117)" class="st0 st1 st2">7</text>
+	</g>
+	<g>
+		<rect x="23.9" y="241.3" width="119.5" height="26.3"/>
+		<text transform="matrix(1 0 0 1 32 254.417)" class="st0 st1 st2">8</text>
+	</g>
+	<g>
+		<rect x="23.9" y="267.6" width="119.5" height="26.3"/>
+		<text transform="matrix(1 0 0 1 32 280.7162)" class="st0 st1 st2">9</text>
+	</g>
+	<g>
+		<rect x="23.9" y="293.9" width="119.5" height="26.3"/>
+		<text transform="matrix(1 0 0 1 32 307.0166)" class="st0 st1 st2">10</text>
+	</g>
+</g>
+<g id="tubes">
+	<path class="st3" d="M191.2,42.9h-47.8"/>
+	<path class="st3" d="M191.2,42.9v52.6"/>
+	<path class="st3" d="M191.2,95.5h-47.8"/>
+	<path class="st3" d="M191.2,95.5v52.6"/>
+	<path class="st3" d="M191.2,148.1h-47.8"/>
+	<path class="st3" d="M191.2,148.1v52.6"/>
+	<path class="st3" d="M191.2,200.7h-47.8"/>
+	<path class="st3" d="M191.2,201.1v52.1"/>
+	<path class="st3" d="M191.2,253.2h-47.8"/>
+	<path class="st3" d="M191.2,253.2v52.6"/>
+	<path class="st3" d="M191.2,305.8h-47.8"/>
+</g>
+<g id="exchangerTubes">
+	<path id="panelToExchanger" class="st4" d="M435.1,42.9h-96.8v98"/>
+	<path id="exchangetPompPanel" class="st4" d="M338.3,236.5v69.3h85.2h-38.7h96.7V88.3"/>
+	<path id="valveToPomp" class="st4" d="M191.2,305.8h116.1v-69.3"/>
+	<path id="valveToExchanger" class="st4" d="M307.4,140.9v-98H191.2"/>
+</g>
+<rect id="gExchanger" x="299.4" y="140.9" class="st5" width="47.8" height="95.6"/>
+<circle class="st6" cx="243.9" cy="305.8" r="19.1"/>
+<circle class="st6" cx="409.9" cy="305.8" r="19.1"/>
+<polygon class="st7" points="226.7,305.8 252.7,291.5 252.7,320.1 "/>
+<polygon class="st7" points="426.8,305.8 400.8,320.1 400.8,291.5 "/>
+<g id="jqfOpS.tif">
+	
+		<image style="overflow:visible;enable-background:new    ;" width="600" height="300" id="Layer_0" xlink:href="images/panel1.png"  transform="matrix(0.1305 0.1483 -9.094652e-02 8.002062e-02 435.3564 7.0556)">
+	</image>
+</g>
+<g id="UWYnKX_1_">
+	
+		<image style="overflow:visible;enable-background:new    ;" width="235" height="215" id="UWYnKX" xlink:href="images/panel2.jpg"  transform="matrix(-0.2326 0 0 0.3371 550.0001 216.9251)">
+	</image>
+</g>
+<text transform="matrix(1.0182 0 0 1 498 300)" class="st1 st8">Pannello Pilota</text>
+<text transform="matrix(1.0182 0 0 1 498 309)" class="st1 st8">Temperatura:</text>
+<text transform="matrix(1.0182 0 0 1 476 62.0908)" class="st1 st8">Pannelli Solari</text>
+<text transform="matrix(1.0182 0 0 1 491 104)" class="st1 st8">Temperatura </text>
+<text transform="matrix(1.0182 0 0 1 491 113)" class="st1 st8">Ingresso:</text>
+<text transform="matrix(1.0182 0 0 1 390 16)" class="st1 st8">Temperatura</text>
+<text transform="matrix(1.0182 0 0 1 390 25)" class="st1 st8">Uscita:</text>
+<text transform="matrix(1.0182 0 0 1 417 25)" class="st1 st8" id="outSun">{{values.outSun | temperature}}</text>
+<text transform="matrix(1.0182 0 0 1 526 113)" class="st1 st8" id="idSun">{{values.inSun | temperature}}</text>
+<text transform="matrix(0.8273 0 0 1 547 309)" class="st1 st8" id="pilotPanel">{{values.pilotPanel | temperature}}</text>
+<text transform="matrix(1.0182 0 0 1 354.7998 236.4663)" class="st1 st8" id="outsunB">{{values.outSunB | temperature}}</text>
+<text transform="matrix(1.0182 0 0 1 269.8828 236.4663)" class="st1 st8" id="outH2O">{{values.outH2O | temperature}}</text>
+<text transform="matrix(1.0182 0 0 1 353.1328 149.2163)" class="st1 st8" id="inSunB">{{values.inSunB | temperature}}</text>
+<text transform="matrix(1.0182 0 0 1 269.8828 149.2163)" class="st1 st8" id="inH2O">{{values.inH2O | temperature}}</text>
+<text transform="matrix(1.0182 0 0 1 503 168)" class="st1 st8">Temperatura</text>
+<text transform="matrix(1.0182 0 0 1 503 177)" class="st1 st8">Aria:</text>
+<text transform="matrix(0.8273 0 0 1 522 177)" class="st1 st8" id="air">{{values.air | temperature}}</text>
+<g>
+	<circle class="st0" cx="612" cy="0" r="50"/>
+	<circle class="st9" cx="612" cy="0" r="50"/>
+</g>
+<circle class="st10" cx="612" cy="0" r="35.9"/>
+</svg>

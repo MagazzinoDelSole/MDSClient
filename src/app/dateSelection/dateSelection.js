@@ -10,7 +10,9 @@ angular.module('mds.dataSelection', ['ui.bootstrap', 'cgBusy', 'mds.data', 'mds.
 	};
 
 	// Option for the picker
-	$scope.dateOptions = {};
+	$scope.dateOptions = {
+		showWeeks: false
+	};
 
 	// This function is called when the button next to the date input is clicked
 	// and toggle the ui.bootstrap date picker
@@ -37,9 +39,9 @@ angular.module('mds.dataSelection', ['ui.bootstrap', 'cgBusy', 'mds.data', 'mds.
 	};
 
 	$scope.isNotAvailable = function (date, mode) {
-		date.setHours(0,0,0,0);
+		date.setHours(0, 0, 0, 0);
 		var availableDates = $scope.availableDates;
-		for(var i in availableDates){
+		for(var i in availableDates) {
 			if(availableDates[i].getTime() == date.getTime()) {
 				return false;
 			}

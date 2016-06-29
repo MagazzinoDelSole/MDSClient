@@ -3,7 +3,7 @@
 		margin: 5px;
 	}
 </style>
-<div class="col-ms-12" ng-if="data.steps > 0" ng-controller="RappresentationCtrl">
+<div class="col-ms-12" ng-if="data.steps > 0">
     <div class="panel panel-default" id="simulationPanel">
         <div class="panel-heading clearfix">
             <div class="btn-group pull-right">
@@ -12,7 +12,7 @@
             <h3 class="panel-title"><strong>Simulazione</strong></h3>
         </div>
         <div class="panel-body" ng-if="showSimulation">
-            <rappresentation instant-values="data.values[step]"></rappresentation>
+            <representation instant-values="data.values[step]"></representation>
             <h2 style="text-align: center;">Ora: {{data.values[step].time}}</h2>
 		</div>
 		<ul class="list-group" ng-if="showSimulation">

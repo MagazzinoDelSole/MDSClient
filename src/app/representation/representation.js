@@ -1,12 +1,12 @@
-angular.module('mds.rappresentation', ['ui.bootstrap-slider', 'mds.data'])
+angular.module('mds.representation', ['ui.bootstrap-slider', 'mds.data'])
 
 
-.controller('RappresentationCtrl', ['$scope', '$interval', 'mdsData', function($scope, $interval, mdsData) {
+.controller('RepresentationCtrl', ['$scope', '$interval', 'mdsData', function($scope, $interval, mdsData) {
 	
 	// insert in the scope areference to the data
 	$scope.data = mdsData;
 	
-	// This is the actual rappresentated step
+	// This is the actual representated step
 	$scope.step = 0;
 
 	$scope.isRunning = false;
@@ -101,38 +101,46 @@ angular.module('mds.rappresentation', ['ui.bootstrap-slider', 'mds.data'])
 	
 }])
 
-.directive('rappresentation', ['$compile', function($compile) {
+.directive('representation', ['$compile', function($compile) {
 	return {
 		restrict: 'AE',
-		templateUrl: 'rappresentation/rappresentation.tpl.svg',
+		templateUrl: 'representation/representation.tpl.svg',
 		scope: {
 			// Create a new scope, that share 'instantValues' (the equal means
 			// single-way binding)
 			values: "=instantValues"
 		},
 		link: function(scope, element, attrs) {
+			
 			// Handle the levels
-			var levels = element[0].querySelectorAll('.gLevel');
+			var levels = element[0].querySelector('#gLevels').children;
+
+			// Prepare each level
 			angular.forEach(levels, function(path, i) {
+				
+				// Get the level
 				var level = angular.element(path);
+				
 				var components = level.children();
 				var box = angular.element(components[0]);
 				var text = angular.element(components[1]);
-				var tube = angular.element(components[2]);
-				// Imposto il testo
+				//var tube = angular.element(components[2]);
+				
+				// Set the angular texts
 				text.html("{{values.sensors[" + i + "] | temperature}}");
-				// E il colore
 				box.attr("ng-attr-fill", "{{values.sensors[" + i + "] | temperature_color}}");
+
+				// Compile angular statements
 				$compile(level)(scope);
 			});
 			
 			// Set the other text
-			var otherTexts = ["pilotPanel", "air", "inH2O", "outH2O", "inSun", "outSun", "inSunB", "outSunB"];
-			for (var i in otherTexts) {
-				var text = angular.element(element[0].querySelector("#" + otherTexts[i]));
-				text.html("{{values." + otherTexts[i] + "}}");
-				$compile(text)(scope);
-			}
+			// var otherTexts = ["pilotPanel", "air", "inH2O", "outH2O", "inSun", "outSun", "inSunB", "outSunB"];
+			// for (var i in otherTexts) {
+			//  var text = angular.element(element[0].querySelector("#" + otherTexts[i]));
+			//  text.html("{{values." + otherTexts[i] + "}}");
+			//  $compile(text)(scope);
+			// }
 		}
 	};
 }])

@@ -2,7 +2,7 @@ angular.module( 'mds', [
   'templates-app',
   'templates-common',
   'mds.dataSelection',
-  'mds.rappresentation',
+  'mds.representation',
   'mds.table',
   'ui.router',
   'ui.bootstrap'
@@ -25,19 +25,14 @@ angular.module( 'mds', [
         templateUrl: 'table/table.tpl.html'
       },
       'simulation': {
-        controller: 'RappresentationCtrl',
-        templateUrl: 'rappresentation/rappresentation.tpl.html'
+        controller: 'RepresentationCtrl',
+        templateUrl: 'representation/representation.tpl.html'
       }
     },
-    data: { pageTitle: 'Dati Statistici - Beta' }
+    data: { pageTitle: 'Dati Statistici' }
   });
-})
-
-.run( function run () {
 })
 
 .controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
   
-})
-
-;
+});

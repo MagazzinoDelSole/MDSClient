@@ -69,6 +69,8 @@ module.exports = {
       'vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js',
       'vendor/angular-bootstrap-slider/slider.js',
       'vendor/angular-busy/dist/angular-busy.min.js',
+      'vendor/angular-i18n/angular-locale_it-it.js'
+      //'vendor/jquery-ui/ui/i18n/datepicker-it.js'
     ],
     css: [
       'vendor/bootstrap/dist/css/bootstrap.min.css',

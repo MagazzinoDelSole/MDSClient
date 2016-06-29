@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html ng-app="mds" ng-controller="AppCtrl">
   <head>
-    <title>Dati Statistici - Beta</title>
+    <title>Dati Statistici</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- font awesome from BootstrapCDN -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-
     <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
     <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
 
@@ -17,7 +14,7 @@
   </head>
   <body>
     <div class="container center">
-      <h2>Dati statistici - Beta</h2>
+      <h2>Dati statistici</h2>
     </div>
 
     <div class="container" ui-view="date"></div>

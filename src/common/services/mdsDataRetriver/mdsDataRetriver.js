@@ -7,9 +7,6 @@ angular.module('mds.dataRetriver', [])
         var d = date.getDate(),
             m = date.getMonth() + 1;
         var fileName = 'file/' + (date.getFullYear() - 2000) + '-' + (m > 9 ? m : ('0' + m)) + '-' + (d > 9 ? d : ('0' + d));
-        console.log(d);
-        console.log(m);
-        console.log(date.getFullYear());
         console.log(fileName);
         return fileName;
     };
