@@ -39,9 +39,11 @@ angular.module('mds.dataSelection', ['ui.bootstrap', 'cgBusy', 'mds.data', 'mds.
 	$scope.isNotAvailable = function (date, mode) {
 		date.setHours(0,0,0,0);
 		var availableDates = $scope.availableDates;
-		for(var i in availableDates)			
-			if(availableDates[i].getTime() == date.getTime())		
+		for(var i in availableDates){
+			if(availableDates[i].getTime() == date.getTime()) {
 				return false;
+			}
+		}
 		return true;
 	};
 

@@ -67,7 +67,8 @@ module.exports = {
       'vendor/angular-rangeslider/angular.rangeSlider.js',
       'vendor/angular-bootstrap-slider/slider.js',
       'vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js',
-      'vendor/angular-busy/dist/angular-busy.min.js'
+      'vendor/angular-busy/dist/angular-busy.min.js',
+      'vendor/jquery-ui.min.js'
     ],
     css: [
       'vendor/bootstrap/dist/css/bootstrap.min.css',
@@ -77,6 +78,8 @@ module.exports = {
       'vendor/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css',
       'vendor/angular-busy/dist/angular-busy.min.css'
     ],
-    assets: []
+    assets: [
+      'vendor/font-awesome/font/*'
+    ]
   },
 };
