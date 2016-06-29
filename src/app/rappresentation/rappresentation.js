@@ -8,6 +8,8 @@ angular.module('mds.rappresentation', ['ui.bootstrap-slider', 'mds.data'])
 	
 	// This is the actual rappresentated step
 	$scope.step = 0;
+
+	$scope.isRunning = false;
 	
 	// This is the object that contains the preferences
 	// of the simulation
@@ -22,7 +24,7 @@ angular.module('mds.rappresentation', ['ui.bootstrap-slider', 'mds.data'])
 		$scope.preferences.speed = newSpeed;
 		
 		// And if the simulation is running, change his speed
-		if(angular.isDefined(timer)) {
+		if($scope.isRunning) {
 			$scope.pause();
 			$scope.play();
 		}
@@ -41,10 +43,10 @@ angular.module('mds.rappresentation', ['ui.bootstrap-slider', 'mds.data'])
 	$scope.play = function() {
 		
 		// Calculate the delay
-		var delay = 250 / $scope.preferences.speed;
+		var delay = 2000 / $scope.preferences.speed;
 		
 		// If the interval already exist, don't do anything
-		if (angular.isDefined(timer)) {
+		if ($scope.isRunning) {
 			return;
 		}
 		
@@ -63,29 +65,37 @@ angular.module('mds.rappresentation', ['ui.bootstrap-slider', 'mds.data'])
 			}
 			
 		}, delay);
+
+		$scope.isRunning = true;
 		
 	};
 	
 	// Stop button
 	$scope.stop = function() {
-		// If the timer exist, stop it
-		if (angular.isDefined(timer)) {
-			$interval.cancel(timer);
-			timer = undefined;
-			
-			// And reset the step counter
-			$scope.step = 0;
+		
+		if (!$scope.isRunning) {
+			return;
 		}
 		
+		// If the timer exist, stop it
+		$interval.cancel(timer);
+		timer = undefined;
+		$scope.isRunning = false;
+			
+		// And reset the step counter
+		$scope.step = 0;
 	};
 	
 	// Pause button
 	$scope.pause = function() {
 		// If the timer exist
-		if (angular.isDefined(timer)) {
-			$interval.cancel(timer);
-			timer = undefined;
+		if (!angular.isDefined(timer)) {
+			return;
 		}
+		
+		$interval.cancel(timer);
+		timer = undefined;
+		$scope.isRunning = false;
 	};
 	
 	
