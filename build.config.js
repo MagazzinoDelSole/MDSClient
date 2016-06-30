@@ -81,7 +81,8 @@ module.exports = {
       'vendor/angular-busy/dist/angular-busy.min.css'
     ],
     assets: [
-      'vendor/font-awesome/font/*'
+      'vendor/font-awesome/font/*',
+      'vendor/bootstrap/fonts/*'
     ]
   },
 };

@@ -3,27 +3,54 @@
 		margin: 5px;
 	}
 </style>
+
 <div class="col-ms-12" ng-if="data.steps > 0">
     <div class="panel panel-default" id="simulationPanel">
         <div class="panel-heading clearfix">
             <div class="btn-group pull-right">
-                <button type="button" class="btn btn-primary" ng-model="showSimulation" ng-init="showSimulation = true" btn-checkbox>Rappresentazione</button>
+                
+                <!-- Toggle to show/hide representation -->
+                <button type="button" class="btn btn-primary" ng-model="showSimulation" ng-init="showSimulation = true" uib-btn-checkbox>Rappresentazione</button>
             </div>
+
+            <!-- Title of the 'card' -->
             <h3 class="panel-title"><strong>Simulazione</strong></h3>
         </div>
+
+        <!-- Representation content -->
         <div class="panel-body" ng-if="showSimulation">
+            
+        	<!-- Animated SVG -->
             <representation instant-values="data.values[step]"></representation>
+
+            <!-- Current time -->
             <h2 style="text-align: center;">Ora: {{data.values[step].time}}</h2>
 		</div>
+
+		<!-- Simulation controls -->
 		<ul class="list-group" ng-if="showSimulation">
 		  	<li class="list-group-item">
 		        <ul class="list-inline">
 			    	<li class="control-box">
 			    		<h5>Comandi</h5>
+
+			    		<!-- Buttons -->
 			    		<div class="btn-group">
-				    		<button class="btn btn-default" ng-click="play()" ng-disabled="isRunning">&#9658</button>
-				    		<button class="btn btn-default" ng-click="pause()" ng-disabled="!isRunning"> &#9646&#9646</button>
-				    		<button class="btn btn-default" ng-click="stop()" ng-disabled="!isRunning">&#9724</button>
+				    		
+			    			<!-- Play -->
+				    		<button class="btn btn-default" ng-click="play()" ng-disabled="isRunning">
+				    			<i class="glyphicon glyphicon-play" aria-hidden="true"></i>
+				    		</button>
+
+				    		<!-- Pause -->
+				    		<button class="btn btn-default" ng-click="pause()" ng-disabled="!isRunning">
+				    			<i class="glyphicon glyphicon-stop" aria-hidden="true"></i>
+				    		</button>
+
+				    		<!-- Stop -->
+				    		<button class="btn btn-default" ng-click="stop()" ng-disabled="!isRunning">
+				    			<i class="glyphicon glyphicon-pause" aria-hidden="true"></i>
+				    		</button>
 				    	</div>
 				    </li>
 			        <li class="control-box" style="width: 50%;">

@@ -1,10 +1,18 @@
 <div class="col-ms-12" ng-show="data.steps > 0">
     <div class="panel panel-default" id="tablePanel">
         <div class="panel-heading clearfix">
+            
+            <!-- Toggles -->
             <div class="btn-group pull-right">
-                <button ng-show="showTable" type="button" class="btn btn-primary" ng-model="showAdvanced" btn-checkbox>Dati avanzati</button>
-                <button type="button" class="btn btn-primary" ng-model="showTable" btn-checkbox >Tabella</button>
+
+                <!-- Toggle to show advanced data -->
+                <button ng-show="showTable" type="button" class="btn btn-primary" ng-model="showAdvanced" uib-btn-checkbox>Dati avanzati</button>
+                
+                <!-- Show/hide table -->
+                <button type="button" class="btn btn-primary" ng-model="showTable" uib-btn-checkbox >Tabella</button>
             </div>
+
+            <!-- Title -->
             <h3 class="panel-title"><strong>Tabella Completa</strong></h3>
         </div>
         <!--La tabella non è all'interno del panel-noby, perchè cosi fa parte del pannello-->

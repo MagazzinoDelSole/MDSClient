@@ -4,13 +4,13 @@
  * the Grunt configuration that is automatically processed.
  */
 
-
 /**
  * First, we include the Twitter Bootstrap LESS files. Only the ones used in the
  * project should be imported as the rest are just wasting space.
  */
 
 @import '../../vendor/bootstrap/less/bootstrap.less';
+
 
 /**
  * This is our main variables file. We must include it last so we can overwrite any variable
@@ -120,20 +120,13 @@ h2 {
 
 @import '../app/dateSelection/style.less';
 
-
 /**
  * Font Awsome is in the assets folder
  */
-@fa-font-path: "/assets/";
+@fa-font-path: "assets/";
 
 /**
- * Use Font awesome also for the Date Picker
+ * Change glyphicons fonts folder.
+ * (icon font path has assets as prefix)
  */
-@import (less, reference) "/vendor/font-awesome/css/font-awesome.css";
-
-.glyphicon:extend(.fa all) {
-  &.glyphicon-chevron-right:extend(.fa-chevron-right all) {};
-  &.glyphicon-chevron-left:extend(.fa-chevron-left all) {};
-  &.glyphicon-chevron-up:extend(.fa-chevron-up all) {};
-  &.glyphicon-chevron-down:extend(.fa-chevron-down all) {};
-}
+@icon-font-path: "";
